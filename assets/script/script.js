@@ -1,6 +1,7 @@
 var title = document.querySelector("#title");
 var hs = document.querySelector("#hs");
-var gbBtn = document.querySelector("#hs button");
+var gbBtn = document.querySelector("#go-back");
+var rtQz = document.querySelector("#retake-quiz");
 var time = document.querySelector("#time h3");
 var sqBtn = document.querySelector("#sq-button");
 var highscoreBtn = document.querySelector("#high-scores");
@@ -9,8 +10,10 @@ var btn1 = document.querySelector("#btn1");
 var btn2 = document.querySelector("#btn2");
 var btn3 = document.querySelector("#btn3");
 var btn4 = document.querySelector("#btn4");
-var btnArray = [btn1, btn2, btn3, btn4];
 var quizQ = document.querySelector("#quiz-container h1");
+var scorePane = document.querySelector("#hs-input");
+var sbmtBtn = document.querySelector("#submit")
+var btnArray = [btn1, btn2, btn3, btn4];
 var slctBtn = 0;
 var score = 0;
 var timeLeft = 60;
@@ -57,14 +60,14 @@ function showHs() {
     title.setAttribute("style", "display: none;");
     hs.setAttribute("style", "display: block;");
     quiz.setAttribute("style", "display: none;");
+    scorePane.setAttribute("style", "display: none;")
 }
 
-function strtQz() {
-    setTime();
+function showScore() {
     title.setAttribute("style", "display: none;");
     hs.setAttribute("style", "display: none;");
-    quiz.setAttribute("style", "display: block;");
-    qzTxt();
+    quiz.setAttribute("style", "display: none;");
+    scorePane.setAttribute("style", "display: block;");
 }
 
 function qzTxt() {
@@ -81,15 +84,24 @@ function runQuiz() {
         score = score + 10;
     }
     else {
-        timeLeft = timeLeft - 10;
+        timeLeft = timeLeft - 5;
     }
     if (slctBtn < questions.length) {
         qzTxt();
     }
     else {
         slctBtn = 0;
-        showTitle();
+        showScore();
     }
+}
+
+function strtQz() {
+    setTime();
+    title.setAttribute("style", "display: none;");
+    hs.setAttribute("style", "display: none;");
+    scorePane.setAttribute("style", "display: none;");
+    quiz.setAttribute("style", "display: block;");
+    qzTxt();
 }
 
 function renderTime(num) {
@@ -105,7 +117,7 @@ function setTime() {
         renderTime(timeLeft);
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            showTitle();
+            showScore();
             timeLeft = 60;
         }
         if (slctBtn === 0 && quiz.getAttribute("style") === "display: none;") {
@@ -120,14 +132,66 @@ for (i = 0; i < btnArray.length; i++) {
     btnArray[i].addEventListener("click", runQuiz)
 }
 
-function inputScore() {
-    when(timeLeft === 0)
-    hs();
+function compare(a, b) {
+    if (a.score < b.score) {
+        return 1;
+    }
+    if (a.score > b.score) {
+        return -1;
+    }
+    return 0;
 }
 
+function saveScore() {
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    var initials = document.querySelector("#fname")
+    var highScore = {
+        initials: initials.value,
+        score: score
+    };
+    highScores.push(highScore);
+    var sortedHighScores = highScores.sort(compare);
+    localStorage.setItem("highScores", JSON.stringify(sortedHighScores));
+    var allHighScores = document.querySelector("#all-high-scores");
+    highScores.forEach(function (highScoreObject) {
+        var highScoreElement = document.createElement("li");
+        highScoreElement.appendChild(document.createTextNode(highScoreObject.initials + " " + highScoreObject.score));
+        allHighScores.appendChild(highScoreElement);
+    })
+}
 
+function clearInitials() {
+    document.getElementById('#fname').value = "";
+}
+
+function sortScores() {
+    highScores.sort(function (a, b) {
+        return parseInt(b.score) - parseInt(a.score);
+    });
+}
+
+function populateHs() {
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+}
+
+function startQuiz() {
+    showQuiz();
+    setTime();
+}
 
 sqBtn.addEventListener("click", strtQz);
 gbBtn.addEventListener("click", showTitle);
+rtQz.addEventListener("click", strtQz);
 highscoreBtn.addEventListener("click", showHs);
 
+sbmtBtn.addEventListener("click", function (event) {
+    var initials = document.querySelector("#fname")
+    event.preventDefault();
+    if (initials.value) {
+        saveScore();
+        showHs();
+    }
+});
+
+document.getElementById('fname').style.width = "230px";
+document.getElementById('fname').style.height = "30px";
