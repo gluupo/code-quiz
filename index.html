@@ -22,15 +22,15 @@
         </div>
         <section class="pane" id="title">
             <div id="title-container">
-                <h1>~ coding quiz challenge ~</h1>
+                <h1>coding quiz challenge</h1>
                 <p>try to answer the following code related questions within the time limit. keep in mind that each
-                    incorrect answer will deplete your time by 10 seconds!</p>
+                    incorrect answer will deplete your time by 5 seconds!</p>
                 <button id="sq-button">start quiz</button>
             </div>
         </section>
         <section class="pane" id="quiz">
             <div id="quiz-container">
-                <h1>~ coding quiz challenge ~</h1>
+                <h1>coding quiz challenge</h1>
                 <button id="btn1"></button>
                 <button id="btn2"></button>
                 <button id="btn3"></button>
@@ -39,8 +39,21 @@
         </section>
         <section class="pane" id="hs">
             <div id="hs-container">
-                <h1>~ highscores ~</h1>
-                <button>go back</button>
+                <h1>highscores</h1>
+                <div>
+                    <ol id="all-high-scores"></ol>
+                </div>
+                <button id="go-back">go back</button>
+            </div>
+        </section>
+        <section class="pane" id="hs-input">
+            <div id="input-container">
+                <h1>add your score to the leaderboard</h1>
+                <form id="form-initials"><br>
+                    <input type="text" id="fname" placeholder="enter your initials here!"><br>
+                    <button id="submit">submit</button>
+                </form>
+                <button id="retake-quiz">retake quiz</button>
             </div>
         </section>
     </main>
