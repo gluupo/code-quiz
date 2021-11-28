@@ -4,7 +4,7 @@
 }
 
 body {
-background-color: #716A68;
+background-color: #d3d3d3;
 }
 
 main {
@@ -22,7 +22,7 @@ h1 {
 }
 
 button {
-    width: 40%;
+    width: 100%;
     margin-top: 20px;
     background-color: #7c5295;
     border-radius: 4px;
@@ -39,10 +39,6 @@ button:hover {
 
 p {
     margin-top: 20px;
-}
-
-form {
-    margin: 10px 10px;
 }
 
 .pane {
@@ -67,7 +63,7 @@ form {
     padding-right: 26px;
     border: 1.5px solid transparent;
     border-radius: 4px;
-    color: #F9F6EE;
+    color: #333;
 }
 
 #high-scores:hover {
@@ -87,7 +83,7 @@ form {
     top: 0;
     right: 0;
     padding-right: 26px;
-    color: #F9F6EE;
+    color: #333;
 }
 
 #hs {
@@ -110,4 +106,8 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+#retake-quiz {
+    display: none;
 }
