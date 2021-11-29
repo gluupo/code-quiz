@@ -4,6 +4,7 @@
 - [objective](objective)
 - [usage](usage)
 - [visuals](visuals)
+- [link](link)
 ## objective
 - create a clean and polished quiz with a responsive user interface. it should feature dynamically updated html, which includes a visible timelimit and decrement per wrong answer. 
 
@@ -17,3 +18,6 @@
 
 ## visuals
 [![Image from Gyazo](https://i.gyazo.com/4c794e765e143c258ba84024ed314bc3.gif)](https://gyazo.com/4c794e765e143c258ba84024ed314bc3)
+
+## link
+https://gluupo.github.io/code-quiz/
