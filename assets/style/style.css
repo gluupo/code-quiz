@@ -83,6 +83,7 @@ p {
     top: 0;
     right: 0;
     padding-right: 26px;
+    border: 1.5px solid transparent;
     color: #333;
 }
 

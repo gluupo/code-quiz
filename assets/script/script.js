@@ -158,10 +158,9 @@ function saveScore() {
         highScoreElement.appendChild(document.createTextNode(highScoreObject.initials + " " + highScoreObject.score));
         allHighScores.appendChild(highScoreElement);
     })
-}
-
-function clearInitials() {
-    document.getElementById('#fname').value = "";
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    initials.value = "";
+    score = 0;
 }
 
 function sortScores() {
