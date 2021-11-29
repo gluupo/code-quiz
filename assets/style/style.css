@@ -111,3 +111,10 @@ p {
 #retake-quiz {
     display: none;
 }
+
+@media only screen and (min-width : 320px) and (max-width : 850px) {
+    .pane {
+        height: 50%;
+        flex: 0 1 75%;
+    }
+}
