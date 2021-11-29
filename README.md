@@ -11,7 +11,7 @@
 ## usage
 - clicking the "start quiz" button will enable the timer to start its count down
 - each correct answer gains the user 10 points
-- each incorrect answer docks 5 seconds from the alloted time
+- each incorrect answer docks 5 seconds from the allotted time
 - the game is over when all the questions are answered or the timer reaches 0
 - an option to input your initials to save your score
 - leaderboard is listed with scores from highest to lowest
