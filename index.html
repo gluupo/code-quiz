@@ -46,11 +46,12 @@
                 <button id="go-back">go back</button>
             </div>
         </section>
-        <section class="pane" id="hs-input" minLength="1" maxLength="3">
+        <section class="pane" id="hs-input">
             <div id="input-container">
                 <h1>add your score to the leaderboard</h1>
                 <form id="form-initials"><br>
-                    <input type="text" id="fname" placeholder="enter your initials here!"><br>
+                    <input type="text" id="fname" placeholder="enter your initials here!" minLength="1"
+                        maxLength="3"><br>
                     <button id="submit">submit</button>
                 </form>
                 <button id="retake-quiz">retake quiz</button>
